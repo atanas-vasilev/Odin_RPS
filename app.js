@@ -19,7 +19,7 @@ function computerPlay(){
 
 function playerSelection(){
     //TO-DO: Error Handling
-    return prompt("Choose - Rock / Paper / Scissors").toLocaleUpperCase;
+    return prompt("Choose - Rock / Paper / Scissors").toLocaleUpperCase();
 }
 
 function playRound(computerSelection, playerSelection){
@@ -71,12 +71,18 @@ function game(){
         switch(result[0]){
             case 0:
                 //tie, no one wins
+                console.log(`Tie, No one gets a point. PLAYER: ${playerScore} | COMPUTER: ${computerScore} `);
+                break;
             case 1: 
                 //player wins
                 playerScore++;
+                console.log(`Player gets a point. Total: ${playerScore}`);
+                break;
             case 2: 
                 //computer wins
                 computerScore++;
+                console.log(`Computer gets a point. Total: ${computerScore}`);
+                break;
 
         }
 
