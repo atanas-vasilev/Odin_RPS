@@ -5,9 +5,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ODIN PROJECT: ROCK PAPER SCISSORS</title>
+    <script src="https://kit.fontawesome.com/b965fd7a74.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="stats">
+        <div class="score-holder">
+            <span class="score-text" contenteditable="true">PLAYER</span>
+            <span id="player-score" class="score">00</span>
+        </div>
+        
+        <div class="round-holder">
+            <span class="round-text">ROUND</span>
+            <div>
+                <span id="current-round" class="round-text">00</span>
+                <span class="sep-text round-text">/</span>
+                <span id="total-rounds" class="round-text" contenteditable="true">05</span>
+            </div>
+        </div>
+
+        <div class="score-holder">
+            <span class="score-text">COMPUTER</span>
+            <span id="computer-score" class="score">00</span>
+        </div>
+    </div>
+
+    <div id="elements-holder">
+        <div id="start" class="start-element"><i class="fa-solid fa-play"></i> START!</div>
+
+        <div id="rock" class="element"><i class="fa-solid fa-hand-back-fist "></i><span class="element-text">ROCK</span></div>
+        <div id="paper" class="element"><i class="fa-solid fa-hand "></i><span class="element-text">PAPER</span></div>
+        <div id="scissors" class="element"><i class="fa-solid fa-hand-scissors "></i><span class="element-text">SCISSORS</span></div>
+    </div>
+
+
+    <div id="latest-actions">
+        <ul id="log">
+            <li>Round 4 goes to PLAYER. ROCK beats SCISSORS</li>
+            <li>Round 3 goes to COMPUTER. SCISSORS beats PAPER</li>
+            <li>Round 2 goes to COMPUTER. PAPER beats ROCK</li>
+            <li>Round 1 goes to PLAYER. ROCK beats SCISSORS</li>
+        </ul>
+    </div>
+
     <script src="app.js"></script>
 </body>
 </html>

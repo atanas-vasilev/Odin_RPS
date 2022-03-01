@@ -1,0 +1,128 @@
+:root,
+:root.light {
+  --bg-color: #D4D2D5;
+  --text-color: #6E6A6F;
+
+  --active-icon-color: #6E6A6F;
+
+  --highlight-color: #AA968A;
+}
+
+:root.dark {
+  --bg-color: #121212;
+  --text-color: #45ADFE;
+}
+
+
+::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--highlight-color);
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+
+
+body{
+    /* font-size: 1.5vw; */
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Courier New', Courier, monospace;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+#stats{
+    display: flex;
+    justify-content: center;
+    gap: 8vw;
+}
+.score-holder{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.round-holder{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+}
+.score{
+    font-size: 3.2em;
+}
+.round-text{
+    font-size:0.75em;
+}
+
+/* ELEMENTS */
+
+#elements-holder{
+    display: flex;
+    justify-content: center;
+    gap: 2vw;
+}
+
+.start-element{
+    color: var(--active-icon-color);
+    display: none;
+    /* display flex to show */
+
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5vh;
+
+    font-size: 4em;
+    border: 2px solid var(--active-icon-color);
+    padding: 0.3em 0.5em; 
+}
+
+
+.element{
+    color: var(--active-icon-color);
+    display: flex;
+    /* display flex to show */
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5vh;
+
+    border: 2px solid var(--active-icon-color);
+    width: 150px;
+    height: 150px;
+
+}
+.element i {
+    font-size: 5.5em;
+}
+
+.element:hover, .start-element:hover{
+    color:var(--highlight-color);
+    background-color:rgba(0, 0, 0, 0.5);
+    border-color: var(--highlight-color);
+    cursor: pointer;
+    font-weight: 900;
+}
+
+/* LOG LATEST ACTIONS */
+
+#latest-actions{
+    display: flex;
+    justify-content: center;
+}
+
+#log{
+    list-style-type: none;
+    overflow-y: scroll;
+
+}
+
