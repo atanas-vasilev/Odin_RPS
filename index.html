@@ -11,27 +11,27 @@
 <body>
     <div id="stats">
         <div class="score-holder">
-            <span class="score-text" contenteditable="true">PLAYER</span>
-            <span id="player-score" class="score">00</span>
+            <span class="score-text" id="player-name" contenteditable="true">PLAYER</span>
+            <span id="player-score" class="score">0</span>
         </div>
         
         <div class="round-holder">
             <span class="round-text">ROUND</span>
             <div>
-                <span id="current-round" class="round-text">00</span>
-                <span class="sep-text round-text">/</span>
-                <span id="total-rounds" class="round-text" contenteditable="true">05</span>
+                <span id="current-round" class="round-text">0</span>
+                <!-- <span class="sep-text round-text">/</span> -->
+                <!-- <span id="total-rounds" class="round-text" contenteditable="true">05</span> -->
             </div>
         </div>
 
         <div class="score-holder">
             <span class="score-text">COMPUTER</span>
-            <span id="computer-score" class="score">00</span>
+            <span id="computer-score" class="score">0</span>
         </div>
     </div>
 
     <div id="elements-holder">
-        <div id="start" class="start-element"><i class="fa-solid fa-play"></i> START!</div>
+        <div id="start" class="start-element"><span id="start-text-icon"><i class="fa-solid fa-play"></i> START!</span><span class="sub-text">Endless Rock, Paper, Scissors</span></div>
 
         <div id="rock" class="element"><i class="fa-solid fa-hand-back-fist "></i><span class="element-text">ROCK</span></div>
         <div id="paper" class="element"><i class="fa-solid fa-hand "></i><span class="element-text">PAPER</span></div>
