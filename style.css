@@ -2,19 +2,15 @@
 :root.light {
     --bg-color: #D4D2D5;
     --text-color: #6E6A6F;
-
     --active-icon-color: #6E6A6F;
-
     --highlight-color: #AA968A;
 }
 
-:root.dark {
-    --bg-color: #121212;
-    --text-color: #45ADFE;
-}
+/* :root.dark {
+
+} */
 
 body {
-    /* font-size: 1.5vw; */
     display: flex;
     flex-direction: column;
 

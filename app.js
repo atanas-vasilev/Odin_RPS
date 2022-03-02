@@ -116,7 +116,7 @@ function init() {
     document.querySelector("#paper").addEventListener("click", () => { playRound("PAPER") });
     document.querySelector("#scissors").addEventListener("click", () => { playRound("SCISSORS") });
 
-
+    //TODO: Gamemode with limited number of rounds (5)
     // endGame();
 }
 
