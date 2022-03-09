@@ -47,6 +47,16 @@ function updateVisuals(ofWho, newScore, logText) {
     document.querySelector("#log").innerHTML = `<li>${logText}</li> ${document.querySelector("#log").innerHTML}`;
 }
 
+function decision(a, b, c) {
+    if (computerSelection[0] === a) {
+        if (playerSelection === b) {
+            result = [1, `Player wins. ${playerSelection} beats ${computerSelection[0]}`];
+        } else if (playerSelection === c) {
+            result = [2, `Computer wins. ${computerSelection[0]} beats ${playerSelection}`];
+        }
+    }
+}
+
 function playRound(playerSelection, computerSelection = computerChoice()) {
 
     let playerScore = Number(document.querySelector("#player-score").innerText);
@@ -59,31 +69,9 @@ function playRound(playerSelection, computerSelection = computerChoice()) {
     }
 
     //If comp = rock
-
-    if (computerSelection[0] === "ROCK") {
-        if (playerSelection === "PAPER") {
-            result = [1, `Player wins. ${playerSelection} beats ${computerSelection[0]}`];
-        } else if (playerSelection === "SCISSORS") {
-            result = [2, `Computer wins. ${computerSelection[0]} beats ${playerSelection}`];
-        }
-    }
-
-    if (computerSelection[0] === "PAPER") {
-        if (playerSelection === "SCISSORS") {
-            result = [1, `Player wins. ${playerSelection} beats ${computerSelection[0]}`];
-        } else if (playerSelection === "ROCK") {
-            result = [2, `Computer wins. ${computerSelection[0]} beats ${playerSelection}`];
-        }
-    }
-
-    if (computerSelection[0] === "SCISSORS") {
-        if (playerSelection === "ROCK") {
-            result = [1, `Player wins. ${playerSelection} beats ${computerSelection[0]}`];
-        } else if (playerSelection === "PAPER") {
-            result = [2, `Computer wins. ${computerSelection[0]} beats ${playerSelection}`];
-        }
-    }
-
+    decision("ROCK", "PAPER", "SCISSORS");
+    decision("PAPER", "SCISSORS", "ROCK");
+    decision("SCISSORS", "ROCK", "PAPER");
 
     switch (result[0]) {
         case 0:
