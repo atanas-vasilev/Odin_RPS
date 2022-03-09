@@ -47,7 +47,17 @@ function updateVisuals(ofWho, newScore, logText) {
     document.querySelector("#log").innerHTML = `<li>${logText}</li> ${document.querySelector("#log").innerHTML}`;
 }
 
-function decision(a, b, c) {
+
+
+function playRound(playerSelection, computerSelection = computerChoice()) {
+
+    let playerScore = Number(document.querySelector("#player-score").innerText);
+    let computerScore = Number(document.querySelector("#computer-score").innerText);
+
+    
+    let result;
+    
+    function decision(a, b, c) {
     if (computerSelection[0] === a) {
         if (playerSelection === b) {
             result = [1, `Player wins. ${playerSelection} beats ${computerSelection[0]}`];
@@ -55,14 +65,7 @@ function decision(a, b, c) {
             result = [2, `Computer wins. ${computerSelection[0]} beats ${playerSelection}`];
         }
     }
-}
-
-function playRound(playerSelection, computerSelection = computerChoice()) {
-
-    let playerScore = Number(document.querySelector("#player-score").innerText);
-    let computerScore = Number(document.querySelector("#computer-score").innerText);
-
-    let result;
+   }
     //If both are the same, no one wins.
     if (computerSelection[0] === playerSelection) {
         result = [0, `It's a tie. You both chose ${computerSelection[0]}`];
