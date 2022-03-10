@@ -4,16 +4,10 @@ function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 function computerChoice() {
-    const rand = getRndInteger(1, 3);
-    console.log("Computer choice: " + rand);
-    switch (rand) {
-        case 1:
-            return ["ROCK", rand.toString()];
-        case 2:
-            return ["PAPER", rand.toString()];
-        case 3:
-            return ["SCISSORS", rand.toString()];
-    }
+    const rand = getRndInteger(0, 2);
+    const options = ['ROCK', 'PAPER', 'SCISSORS']
+    console.log("Computer choice: " + rand + " " + options[rand]);
+    return [options[rand], rand.toString()];
 }
 function showPlayButtons() {
     // show rock paper scissor btns and hide start button
