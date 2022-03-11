@@ -1,32 +1,22 @@
 document.querySelector("#start").addEventListener("click", init);
+const getRndInteger = (min, max) => Math.floor(Math.random() * (max - min + 1) ) + min;
 
-function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min + 1) ) + min;
-}
 function computerChoice() {
     const rand = getRndInteger(0, 2);
     const options = ['ROCK', 'PAPER', 'SCISSORS']
     console.log("Computer choice: " + rand + " " + options[rand]);
     return [options[rand], rand.toString()];
 }
-function showPlayButtons() {
-    // show rock paper scissor btns and hide start button
-    resetGame();
-    document.querySelector("#start").style.display = "none";
-    document.querySelectorAll(".element").forEach(element => element.style.display = "flex");
-}
-function endGame() {
-    // hide rock paper scissor btns, show restart button
-    document.querySelector("#start").style.display = "flex";
-    document.querySelectorAll(".element").forEach(element => element.style.display = "none");
-}
-function resetGame() {
-    // hide rock paper scissor btnsl, reset points, show start button;
-    document.querySelector("#player-score").innerText = "0";
-    document.querySelector("#computer-score").innerText = "0";
-    document.querySelector("#current-round").innerText = "0";
-    document.querySelector("#log").innerHTML = "";
-    document.querySelector("#start").style.display = "flex";
+function action(doWhat) {
+    if(doWhat == "Start Game"){
+        document.querySelectorAll("#player-score, #computer-score, #current-round").forEach(scoreHolder => scoreHolder.innerText = "0");
+        document.querySelector("#log").innerHTML = "";
+        document.querySelector("#start").style.display = "none";
+        document.querySelectorAll(".element").forEach(element => element.style.display = "flex");
+    } else if (doWhat == "End Game") {
+        document.querySelector("#start").style.display = "flex";
+        document.querySelectorAll(".element").forEach(element => element.style.display = "none");
+    } 
 }
 function updateVisuals(ofWho, newScore, logText) {
     //increment scrore visuals
@@ -45,73 +35,54 @@ function playRound(playerSelection, computerSelection = computerChoice()) {
 
     let playerScore = Number(document.querySelector("#player-score").innerText);
     let computerScore = Number(document.querySelector("#computer-score").innerText);
-
     let result;
-    //If both are the same, no one wins.
+    
+    function turnDecision(a, b, c) {
+        if (computerSelection[0] === a) {
+            if (playerSelection ===b) {
+                result = [1, `Player wins. ${playerSelection} beats ${computerSelection[0]}`];
+            } else if (playerSelection === c) {
+                result = [2, `Computer wins. ${computerSelection[0]} beats ${playerSelection}`];
+            }
+        }
+    }
+
     if (computerSelection[0] === playerSelection) {
         result = [0, `It's a tie. You both chose ${computerSelection[0]}`];
     }
 
-    //If comp = rock
-
-    if (computerSelection[0] === "ROCK") {
-        if (playerSelection === "PAPER") {
-            result = [1, `Player wins. ${playerSelection} beats ${computerSelection[0]}`];
-        } else if (playerSelection === "SCISSORS") {
-            result = [2, `Computer wins. ${computerSelection[0]} beats ${playerSelection}`];
-        }
-    }
-
-    if (computerSelection[0] === "PAPER") {
-        if (playerSelection === "SCISSORS") {
-            result = [1, `Player wins. ${playerSelection} beats ${computerSelection[0]}`];
-        } else if (playerSelection === "ROCK") {
-            result = [2, `Computer wins. ${computerSelection[0]} beats ${playerSelection}`];
-        }
-    }
-
-    if (computerSelection[0] === "SCISSORS") {
-        if (playerSelection === "ROCK") {
-            result = [1, `Player wins. ${playerSelection} beats ${computerSelection[0]}`];
-        } else if (playerSelection === "PAPER") {
-            result = [2, `Computer wins. ${computerSelection[0]} beats ${playerSelection}`];
-        }
-    }
-
+    turnDecision("ROCK", "PAPER", "SCISSORS");
+    turnDecision("PAPER", "SCISSORS", "ROCK");
+    turnDecision("SCISSORS", "ROCK", "PAPER");
 
     switch (result[0]) {
         case 0:
-            //tie, no one wins
             console.log(`Tie, No one gets a point. PLAYER: ${playerScore} | COMPUTER: ${computerScore} `);
             updateVisuals('none', 0, result[1]);
             break;
         case 1:
-            //player wins
             playerScore++;
             updateVisuals('player', playerScore, result[1]);
             console.log(`Player gets a point. Total: ${playerScore}`);
             break;
         case 2:
-            //computer wins
             computerScore++;
             updateVisuals('computer', computerScore, result[1]);
             console.log(`Computer gets a point. Total: ${computerScore}`);
             break;
     }
-
     return result;
-
 }
 
 function init() {
-    showPlayButtons();
-
+    action('Start Game');;
     document.querySelector("#rock").addEventListener("click", () => { playRound("ROCK") });
     document.querySelector("#paper").addEventListener("click", () => { playRound("PAPER") });
     document.querySelector("#scissors").addEventListener("click", () => { playRound("SCISSORS") });
 
     //TODO: Gamemode with limited number of rounds (5)
-    // endGame();
+    //TODO: End Game restart bug fidx
+    //action('End Game');
 }
 
 
