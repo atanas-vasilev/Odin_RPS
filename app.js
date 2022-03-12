@@ -1,4 +1,7 @@
 document.querySelector("#start").addEventListener("click", init);
+document.querySelector("#rock").addEventListener("click", () => { playRound("ROCK") });
+document.querySelector("#paper").addEventListener("click", () => { playRound("PAPER") });
+document.querySelector("#scissors").addEventListener("click", () => { playRound("SCISSORS") });
 const getRndInteger = (min, max) => Math.floor(Math.random() * (max - min + 1) ) + min;
 
 function computerChoice() {
@@ -74,14 +77,11 @@ function playRound(playerSelection, computerSelection = computerChoice()) {
     return result;
 }
 
+//TODO: -- DONE -- End Game restart bug fix 
+
 function init() {
     action('Start Game');;
-    document.querySelector("#rock").addEventListener("click", () => { playRound("ROCK") });
-    document.querySelector("#paper").addEventListener("click", () => { playRound("PAPER") });
-    document.querySelector("#scissors").addEventListener("click", () => { playRound("SCISSORS") });
-
     //TODO: Gamemode with limited number of rounds (5)
-    //TODO: End Game restart bug fidx
     //action('End Game');
 }
 
